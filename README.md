@@ -1,6 +1,6 @@
-# YourApp
+# Rodix
 
-**YourApp** is a minimal command-line tool built in Go that allows users to process both video and image files with ease. It leverages the power of [FFmpeg](https://ffmpeg.org/) under the hood via the [ffmpeg-go](https://github.com/u2takey/ffmpeg-go) library, offering a clean and modular command structure for common media processing tasks.
+**Rodix** is a minimal command-line tool built in Go that allows users to process both video and image files with ease. It leverages the power of [FFmpeg](https://ffmpeg.org/) under the hood via the [ffmpeg-go](https://github.com/u2takey/ffmpeg-go) library, offering a clean and modular command structure for common media processing tasks.
 
 ## Features
 
