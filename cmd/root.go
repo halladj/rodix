@@ -9,6 +9,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var inputFile string
+
 var rootCmd = &cobra.Command{
 	Use:   "rodix",
 	Short: "",
@@ -22,5 +24,14 @@ func Execute() {
 }
 
 func init() {
+	rootCmd.PersistentFlags().StringVarP(
+		&inputFile,
+		"input",
+		"i",
+		"",
+		"Input file name (required)",
+	)
+	rootCmd.AddCommand(rotateCmd)
 	rootCmd.AddCommand(convertCmd)
+	rootCmd.MarkPersistentFlagRequired("input")
 }

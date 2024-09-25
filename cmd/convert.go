@@ -13,7 +13,6 @@ import (
 )
 
 var (
-	inputFile  string
 	outputFile string
 )
 
@@ -22,13 +21,6 @@ var convertCmd = &cobra.Command{
 	Short: "convert media file into other file type.",
 	Long:  `convert the media file extention { either video or images } into a diseared other extention.`,
 	RunE: func(cmd *cobra.Command, args []string) error {
-		//if inputFile == "" {
-		//return errors.New("input file is required")
-		//}
-
-		//if outputFile == "" {
-		//return errors.New("output file is required")
-		//}
 
 		// Check if input file exists
 		if _, err := os.Stat(inputFile); os.IsNotExist(err) {
@@ -54,13 +46,6 @@ var convertCmd = &cobra.Command{
 func init() {
 
 	convertCmd.PersistentFlags().StringVarP(
-		&inputFile,
-		"input",
-		"i",
-		"",
-		"Input file name (required)",
-	)
-	convertCmd.PersistentFlags().StringVarP(
 		&outputFile,
 		"output",
 		"o",
@@ -68,7 +53,6 @@ func init() {
 		"Output file extention(required)",
 	)
 
-	convertCmd.MarkPersistentFlagRequired("input")
 	convertCmd.MarkPersistentFlagRequired("output")
 }
 
