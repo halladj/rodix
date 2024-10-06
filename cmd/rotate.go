@@ -30,7 +30,6 @@ var rotateCmd = &cobra.Command{
 		// Use ffmpeg-go to rotate the image
 		fmt.Printf("Rotating image %s by %f degrees\n", inputFile, degree)
 
-		// TODO: This code is trash check out docs.
 		err := ffmpeg.Input(inputFile).
 			Output(outputFile, ffmpeg.KwArgs{"vf": "transpose=2"}).
 			ErrorToStdOut().
