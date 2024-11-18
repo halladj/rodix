@@ -4,8 +4,10 @@ Copyright © 2024 NAME HERE Hamza.halladj.cs@gmail.com
 package cmd
 
 import (
+	"errors"
 	"fmt"
 	"os"
+	"regexp"
 	"strings"
 
 	"github.com/spf13/cobra"
@@ -56,16 +58,26 @@ func init() {
 	convertCmd.MarkPersistentFlagRequired("output")
 }
 
-func cleanString(s string) string {
-	newString := strings.Split(s, ".")
-	if len(newString) < 1 {
-		return ""
-	}
+func cleanString(s string) (string, error) {
 
 	// TODO: use regix to verify that it has a proper form.
-	// TODO: add regix for the supported extention
 
-	return newString[0]
+	// verify if this class support empty string, if it does change it.
+	r, _ := regexp.Compile("[[:alpha:]].[[:alpha:]]")
+	b := r.MatchString(s)
+	if !b {
+		return "", errors.New("file does not have a valid name")
+	}
+
+	newString := strings.Split(s, ".")
+	if len(newString) < 1 {
+		return "", errors.New("error")
+	}
+	// TODO: add regix for the supported extention
+	// complete the rest of extentions list
+	r, _ = regexp.Compile("jpeg|png|jpg")
+
+	return newString[0], nil
 }
 
 func checkOutExtention(s string) string {
